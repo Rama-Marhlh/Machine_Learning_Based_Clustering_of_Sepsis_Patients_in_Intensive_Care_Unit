@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sepsis Homepage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  <style>
+
+ * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4e4dc;
+      justify-content: center;
+      align-items: center;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px; /* Added horizontal padding */
+      background-color: #f4e4dc;
+    }
+    .header img {
+      width: auto;
+      max-width: 300px; 
+      height: auto; 
+      display: block;
+      margin-right: auto;  
+      
+      
+    }
+    .form-container {
+  max-width: 800px; /* Or any maximum width you prefer */
+  height: 450px; /* Set a fixed height for the container */
+  margin: 20px 0 20px auto; /* Top & Bottom margins set to 20px, Right margin set to 0, Left margin set to auto */
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll; /* This will always show a vertical scrollbar */
+  overflow-x: hidden; /* This will always show a vertical scrollbar */
+  margin-right: 60px;  
+  right: 50px; /* Adjust the value to shift the form to the left */
+}
+    .corner-images {
+      position: relative;
+      overflow: hidden; 
+    }
+    .corner-images::before,
+    .corner-images::after,
+    .corner-images div::before,
+    .corner-images div::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(10deg);
+    }
+    .corner-images::before {
+      top: -50px;
+      left: -210px;
+      background-image: url("{{ url_for('static', filename='images/1.png') }}");
+      transform: rotate(20deg);
+    }
+    .corner-images div::before {
+      bottom: -240px;
+      left: -200px;
+      background-image: url("{{ url_for('static', filename='images/1.png') }}");
+    }
+    .corner-images::after {
+      top: -50px;
+      right: -120px;
+      background-image: url("{{ url_for('static', filename='images/1.png') }}");
+      transform: rotate(-5deg);
+    }
+    .corner-images div::after {
+      bottom: -240px;
+      right: -190px;
+      background-image: url("{{ url_for('static', filename='images/2.png') }}");
+    }
+ 
+  .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the start (left) */
+  list-style-type: none;
+  margin: -50px 0 0; /* Adjust as needed to raise up and reset right margin */
+  padding: 50px; /* Resets both left and right padding */
+}
+
+.nav-links li {
+  padding: 0 5px; /* Adjust spacing between navigation items as needed */
+
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff; /* Adjust the text color as needed */
+  font-weight: bold;
+  display: inline-block;
+  padding: 10px 20px; /* Adjust padding to control the size of the buttons */
+  margin: 0 10px; /* Space between the links */
+  background: #f7c4c1; /* Use a solid color for the background */
+  border-radius: 20px; /* Adjust as needed to get the rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.nav-links a:hover {
+  background-color: #e6b3b0; /* Slightly darker shade for hover state */
+}
+.footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+}
+.main-content h1 {
+  font-family: 'Lilita One', cursive;
+  margin-bottom: 0.2em; /* Reduces space between the titles */
+  /* Keep other styles as is */
+}
+.main-content p {
+  font-family: 'TheSans', cursive;
+  color: #750C0C;
+  font-size: 30px;
+}
+.main-content {
+  text-align: center; /* Aligns text to the right */
+  margin-top: -10px; /* Raise the content up by increasing the negative margin */
+}
+.main-content h1:first-of-type {
+  color: #c51718;
+  font-size: 90px;
+  /* Keep other styles as is */
+}
+
+.main-content h1:last-of-type {
+  color: #ffffff;
+  font-size: 50px;
+  /* Keep other styles as is */
+}
+
+.content-container {
+      display: flex;
+      align-items: flex-start; /* Aligns items to the top of the container */
+      padding: 120px;
+      margin-top: -540px;
+}
+
+    /* Adjusts the footer to accommodate the flex layout */
+.footer {
+      position: relative; /* Changed from fixed to relative */
+}
+.icon-container {
+      display: flex;
+      align-items: center;
+      background-color: #f7c4c1; /* Replace with your color value */
+      padding: 10px;
+      border-radius: 20px; /* Rounded corners like in your example */
+}
+    
+.icon {
+      cursor: pointer;
+      margin-right: 10px; /* Space between the icons */
+}
+
+.icon img {
+      width: 30px; /* Example width */
+      height: 30px; /* Example height */
+}
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type='submit'] {
+      width: auto;
+      padding: 10px 20px;
+      background-color: #c51718;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    </style>
+</head>
+<body class="corner-images">
+  <header class="header img">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo"  style="max-width: 230px; height: auto; margin-top: -60px;">
+    <div class="navigation-container">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      <div class="icon-container">
+        <div class="icon">
+          <img src="{{ url_for('static', filename='images/search.png') }}" alt="Search" >
+        </div>
+        <div class="icon">
+          <img src="{{ url_for('static', filename='images/Hamburger_icon.svg.png') }}" alt="Menu" >
+        </div>
+        
+      </div>
+    </div>
+    </ul>
+  </header>
+</body>
+  <div class="content-container">
+    <main class="main-content">
+            <h1 style = margin-top:450px>About us</h1>
+            <h1 style = margin-top:-20px></h1>
+
+            <p> Welcome to the Sepsis Patients Clustering application. Our mission is to leverage advanced machine learning techniques to enhance the management and treatment of sepsis. 
+              
+              By categorizing sepsis patients into clinically meaningful subgroups and providing personalized treatment insights, we aim to improve patient outcomes and streamline healthcare delivery.
+
+We focus on providing healthcare providers with actionable insights through an intuitive and user-friendly interface, facilitating real-time decision-making and improving the quality of sepsis care.</p>
+
+<h1 style="color:#c51718; font-family:TheSans; font-size:30px;">Join us in our mission to revolutionize sepsis management with AI-driven solutions.</h1>
+    </main>
+  </div>
+        </div>
+  <!-- The bottom corner images div might need to be adjusted or removed depending on the new layout -->
+  <footer class="footer">
+  </footer>
+</html>

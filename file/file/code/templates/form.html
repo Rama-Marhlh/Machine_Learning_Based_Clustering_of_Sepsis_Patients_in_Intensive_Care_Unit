@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sepsis Homepage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  <style>
+
+ * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4e4dc;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px; /* Added horizontal padding */
+      background-color: #f4e4dc;
+    }
+    .header img {
+      width: auto;
+      max-width: 300px; 
+      height: auto; 
+      display: block;
+      margin-right: auto;  
+      
+    }
+    .corner-images {
+      position: relative;
+      overflow: hidden; 
+    }
+    .corner-images::before,
+    .corner-images::after,
+    .corner-images div::before,
+    .corner-images div::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(10deg);
+    }
+    .corner-images::before {
+      top: -50px;
+      left: -210px;
+      background-image: url('1.png');
+      transform: rotate(20deg);
+    }
+    .corner-images div::before {
+      bottom: -240px;
+      left: -200px;
+      background-image: url('1.png');
+    }
+    .corner-images::after {
+      top: -50px;
+      right: -120px;
+      background-image: url('1.png');
+      transform: rotate(-5deg);
+    }
+    .corner-images div::after {
+      bottom: -240px;
+      right: -190px;
+      background-image: url('2.png');
+    }
+ 
+    .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the start (left) */
+  list-style-type: none;
+  margin: -50px 0 0; /* Adjust as needed to raise up and reset right margin */
+  padding: 50px; /* Resets both left and right padding */
+}
+
+.nav-links li {
+  padding: 0 5px; /* Adjust spacing between navigation items as needed */
+
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff; /* Adjust the text color as needed */
+  font-weight: bold;
+  display: inline-block;
+  padding: 10px 20px; /* Adjust padding to control the size of the buttons */
+  margin: 0 10px; /* Space between the links */
+  background: #f7c4c1; /* Use a solid color for the background */
+  border-radius: 20px; /* Adjust as needed to get the rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.nav-links a:hover {
+  background-color: #e6b3b0; /* Slightly darker shade for hover state */
+}
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      background-color: #f4e4dc;
+    }
+    .main-content h1 {
+  font-family: 'Lilita One', cursive;
+  margin-bottom: 0.2em; /* Reduces space between the titles */
+  /* Keep other styles as is */
+}
+.main-content {
+  text-align: center; /* Aligns text to the right */
+  margin-top: -10px; /* Raise the content up by increasing the negative margin */
+  margin-right: 500px; /* Shifts the content to the right */
+  /* Keep other styles as is */
+}
+.main-content h1:first-of-type {
+  color: #c51718;
+  font-size: 90px;
+  /* Keep other styles as is */
+}
+
+.main-content h1:last-of-type {
+  color: #ffffff;
+  font-size: 50px;
+  /* Keep other styles as is */
+}
+
+  .content-container {
+      display: flex;
+      justify-content: space-between; /* Spaces out the main content and the form */
+      align-items: flex-start; /* Aligns items to the top of the container */
+      padding: 120px;
+      margin-top: -60px;
+    }
+
+    /* Adjusts the footer to accommodate the flex layout */
+    .footer {
+      position: relative; /* Changed from fixed to relative */
+    }
+    .icon-container {
+      display: flex;
+      align-items: center;
+      background-color: #f7c4c1; /* Replace with your color value */
+      padding: 10px;
+      border-radius: 20px; /* Rounded corners like in your example */
+    }
+    
+    .icon {
+      cursor: pointer;
+      margin-right: 10px; /* Space between the icons */
+    }
+
+    /* Adjust the width and height as needed for your icons */
+    .icon img {
+      width: 30px; /* Example width */
+      height: 30px; /* Example height */
+    }
+  .left-center-image {
+  position: absolute; /* Position it relative to the nearest positioned ancestor or to the body */
+  top: 110%; /* 50% from the top */
+  left: 800px; /* Align to the left side */
+  transform: translateY(-100%); /* Shift the image up by half its height to center it vertically */
+  z-index: 10; /* Ensure it's above other content */
+}
+
+.left-center-image img {
+  display: block; /* Remove any space below the image */
+  max-height: 900px; /* Maximum height of the image, adjust as needed */
+  width: auto; /* Maintain aspect ratio */
+}
+form {
+      max-width: 800px; /* Or any maximum width you prefer */
+      margin: 20px auto; /* Centers the form in the middle of the page */
+      display: grid;
+      /*grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px; /* Spacing between the grid items */
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .form-container {
+  max-width: 800px; /* Or any maximum width you prefer */
+  /*height: 450px; /* Set a fixed height for the container */
+  margin: 20px 0 20px auto; /* Top & Bottom margins set to 20px, Right margin set to 0, Left margin set to auto */
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll; /* This will always show a vertical scrollbar */
+  overflow-x: hidden; /* This will always show a vertical scrollbar */
+  position: relative; /* Add this to use with left property */
+  right: 50px; /* Adjust the value to shift the form to the left */
+}
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+    input[type='submit'] {
+      width: auto;
+      padding: 10px 20px;
+      background-color: #c51718;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    input[type='submit']:hover {
+      background-color: #a41315;
+    }
+    </style>
+</head>
+<body class="corner-images">
+  <header class="header img">
+    <img src="logo.png" alt="Logo" style="max-width: 230px; height: auto; margin-top: -60px;">
+    <div class="navigation-container">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      <div class="icon-container">
+        <!-- Search Icon -->
+        <div class="icon">
+          <img src="C:\Users\DELL\Desktop\MD project\templates\search.png"alt="Search">
+        </div>
+        <!-- Menu Icon -->
+        <div class="icon">
+          <img src="C:\Users\DELL\Desktop\MD project\templates\Hamburger_icon.svg.png" alt="Menu">
+        </div>
+        
+      </div>
+    </div>
+
+    </ul>
+    
+  </header>
+   <h1>Sipsis Examinations</h1>
+   <div class="form-container">
+    <label for='input1'>Input 1:</label>
+    <input type='text' id='input1' name='input1' required>
+    <label for='input2'>Input 2:</label>
+    <input type='text' id='input2' name='input2' required>
+    <label for='input3'>Input 3:</label>
+    <input type='text' id='input3' name='input3' required>
+    <label for='input4'>Input 4:</label>
+    <input type='text' id='input4' name='input4' required>
+    <label for='input5'>Input 5:</label>
+    <input type='text' id='input5' name='input5' required>
+    <label for='input6'>Input 6:</label>
+    <input type='text' id='input6' name='input6' required>
+    <label for='input7'>Input 7:</label>
+    <input type='text' id='input7' name='input7' required>
+    <label for='input8'>Input 8:</label>
+    <input type='text' id='input8' name='input8' required>
+    <label for='input9'>Input 9:</label>
+    <input type='text' id='input9' name='input9' required>
+    <label for='input10'>Input 10:</label>
+    <input type='text' id='input10' name='input10' required>
+    <label for='input11'>Input 11:</label>
+    <input type='text' id='input11' name='input11' required>
+    <label for='input12'>Input 12:</label>
+    <input type='text' id='input12' name='input12' required>
+    <label for='input13'>Input 13:</label>
+    <input type='text' id='input13' name='input13' required>
+    <label for='input14'>Input 14:</label>
+    <input type='text' id='input14' name='input14' required>
+    <label for='input15'>Input 15:</label>
+    <input type='text' id='input15' name='input15' required>
+    <label for='input16'>Input 16:</label>
+    <input type='text' id='input16' name='input16' required>
+    <label for='input17'>Input 17:</label>
+    <input type='text' id='input17' name='input17' required>
+    <label for='input18'>Input 18:</label>
+    <input type='text' id='input18' name='input18' required>
+    <label for='input19'>Input 19:</label>
+    <input type='text' id='input19' name='input19' required>
+    <label for='input20'>Input 20:</label>
+    <input type='text' id='input20' name='input20' required>
+    <label for='input21'>Input 21:</label>
+    <input type='text' id='input21' name='input21' required>
+    <label for='input22'>Input 22:</label>
+    <input type='text' id='input22' name='input22' required>
+    <label for='input23'>Input 23:</label>
+    <input type='text' id='input23' name='input23' required>
+    <label for='input24'>Input 24:</label>
+    <input type='text' id='input24' name='input24' required>
+    <label for='input25'>Input 25:</label>
+    <input type='text' id='input25' name='input25' required>
+    <label for='input26'>Input 26:</label>
+    <input type='text' id='input26' name='input26' required>
+    <label for='input27'>Input 27:</label>
+    <input type='text' id='input27' name='input27' required>
+    <label for='input28'>Input 28:</label>
+    <input type='text' id='input28' name='input28' required>
+    <label for='input29'>Input 29:</label>
+    <input type='text' id='input29' name='input29' required>
+    <label for='input30'>Input 30:</label>
+    <input type='text' id='input30' name='input30' required>
+    <label for='input31'>Input 31:</label>
+    <input type='text' id='input31' name='input31' required>
+    <label for='input32'>Input 32:</label>
+    <input type='text' id='input32' name='input32' required>
+    <label for='input33'>Input 33:</label>
+    <input type='text' id='input33' name='input33' required>
+    <label for='input34'>Input 34:</label>
+    <input type='text' id='input34' name='input34' required>
+    <label for='input35'>Input 35:</label>
+    <input type='text' id='input35' name='input35' required>
+    <label for='input36'>Input 36:</label>
+    <input type='text' id='input36' name='input36' required>
+    <label for='input37'>Input 37:</label>
+    <input type='text' id='input37' name='input37' required>
+    <label for='input38'>Input 38:</label>
+    <input type='text' id='input38' name='input38' required>
+    <label for='input39'>Input 39:</label>
+    <input type='text' id='input39' name='input39' required>
+    <input type='submit' value='Submit'>
+  </div>
+  <div class="content-container">
+    <main class="main-content">
+
+    </main>
+    </div>
+  </div>
+  <!-- The bottom corner images div might need to be adjusted or removed depending on the new layout -->
+  <footer class="footer">
+  </footer>
+</body>
+</html>

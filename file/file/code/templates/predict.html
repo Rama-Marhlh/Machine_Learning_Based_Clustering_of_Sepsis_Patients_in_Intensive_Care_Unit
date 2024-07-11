@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sepsis Homepage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4e4dc;
+      justify-content: center;
+      align-items: center;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      background-color: #f4e4dc;
+    }
+    .header img {
+      width: auto;
+      max-width: 300px; 
+      height: auto; 
+      display: block;
+      margin-right: auto;  
+    }
+    .form-container {
+      max-width: 800px;
+      height: 450px;
+      margin: 20px 0 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow-y: scroll;
+      overflow-x: hidden;
+      margin-right: 60px;
+      right: 50px;
+    }
+    .corner-images {
+      position: relative;
+      overflow: hidden; 
+    }
+    .corner-images::before,
+    .corner-images::after,
+    .corner-images div::before,
+    .corner-images div::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(10deg);
+    }
+    .corner-images::before {
+      top: -50px;
+      left: -210px;
+      background-image: url("{{ url_for('static', filename='images/1.png') }}");
+      transform: rotate(20deg);
+    }
+    .corner-images div::before {
+      bottom: -240px;
+      left: -200px;
+      background-image: url("{{ url_for('static', filename='images/1.png') }}");
+    }
+    .corner-images::after {
+      top: -50px;
+      right: -120px;
+      background-image: url("{{ url_for('static', filename='images/1.png') }}");
+      transform: rotate(-5deg);
+    }
+    .corner-images div::after {
+      bottom: -240px;
+      right: -190px;
+      background-image: url("{{ url_for('static', filename='images/2.png') }}");
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      list-style-type: none;
+      margin: -50px 0 0;
+      padding: 50px;
+    }
+    .nav-links li {
+      padding: 0 5px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 0 10px;
+      background: #f7c4c1;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+    .nav-links a:hover {
+      background-color: #e6b3b0;
+    }
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+    }
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      margin-top: 550px;
+      
+    }
+    .main-content h1 {
+      font-family: 'Lilita One', cursive;
+      margin-bottom: 0.2em;
+    }
+    .main-content .text-content {
+      margin-right: 20px;
+    }
+    .main-content h1:first-of-type {
+      color: #c51718;
+      font-size: 70px;
+      margin-top: 0;
+    }
+    .main-content h1:last-of-type {
+      color: #000000;
+      font-size: 40px;
+      margin-top: 20px;
+    }
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 0;
+      margin-top: -420px;
+    }
+    .footer {
+      position: relative;
+    }
+    .icon-container {
+      display: flex;
+      align-items: center;
+      background-color: #f7c4c1;
+      padding: 10px;
+      border-radius: 20px;
+    }
+    .icon {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .icon img {
+      width: 30px;
+      height: 30px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    input[type='submit'] {
+      width: auto;
+      padding: 10px 20px;
+      background-color: #c51718;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    #cluster-description {
+      font-size: 20px;
+      font-family: 'Lilita One', cursive;
+    }
+    #cluster-image {
+      width: 650px;
+    }
+  </style>
+</head>
+<body class="corner-images">
+  <header class="header img">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="max-width: 230px; height: auto; margin-top: -60px;">
+    <div class="navigation-container">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <div class="icon-container">
+          <div class="icon">
+            <img src="{{ url_for('static', filename='images/search.png') }}" alt="Search">
+          </div>
+          <div class="icon">
+            <img src="{{ url_for('static', filename='images/Hamburger_icon.svg.png') }}" alt="Menu">
+          </div>
+        </div>
+      </ul>
+    </div>
+  </header>
+  <div class="content-container">
+    <main class="main-content">
+      <div class="text-content">
+        <h1 >Prediction Result</h1>
+        <h1 id="cluster-header">Cluster: <span id="cluster-number">{{ cluster }}</span></h1>
+        <p id="cluster-description"></p>
+      </div>
+      <img id="cluster-image" style = " margin-left: 150px;"src="" alt="Cluster Image">
+    </main>
+  </div>
+  <script>
+    function setClusterDescription() {
+      var clusterNumber = document.getElementById('cluster-number').innerText;
+      var description = "";
+      var imagePath = "";
+
+      switch (clusterNumber) {
+        case "0":
+          description = "Critical Care and Chronic Conditions";
+          imagePath = "/static/images/cluster0.png";
+          break;
+        case "1":
+          description = "Elderly with Moderate Acute Concerns";
+          imagePath =  "/static/images/cluster1.png";
+          break;
+        case "2":
+          description = "Largest Cluster with Stabilized Patients";
+          imagePath =  "/static/images/cluster2.png";
+          break;
+        case "3":
+          description = "Elderly with Significant Chronic Issues";
+          imagePath =  "/static/images/cluster3.png";
+          break;
+        case "4":
+          description = "Elderly with High Acuity and Comorbidities";
+          imagePath ="/static/images/Cluster4.png";
+          break;
+        case "5":
+          description = "Large, Diverse Patient Group with Chronic and Acute Conditions";
+          imagePath = "/static/images/cluster5.png";
+          break;
+        case "6":
+          description = "Youngest, Highly Dependent on Intensive Care";
+          imagePath =  "/static/images/cluster6.png";
+          break;
+        default:
+          description = "Unspecified Group";
+      }
+        document.getElementById('cluster-description').innerText = description;
+        document.getElementById('cluster-image').src = imagePath;
+    }
+
+    // Call the function on load
+    window.onload = setClusterDescription;
+</script>
+</body>
+  <!-- The bottom corner images div might need to be adjusted or removed depending on the new layout -->
+  <footer class="footer">
+  </footer>
+</html>
+
+
+
+
