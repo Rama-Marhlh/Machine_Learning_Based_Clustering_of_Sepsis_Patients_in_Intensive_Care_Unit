@@ -15,3 +15,5 @@ personalized treatment strategies, ultimately aiming to improve patient prognos
 However, the persistent challenge of accurately identifying
 and managing sepsis in a diverse patient population indicates the need for continued research and innovation in this
 field
+
+# you can read the full reserch in /Machine_Learning_Based_Clustering_of_Sepsis_Patients_in_Intensive_Care_Unit.pdf
